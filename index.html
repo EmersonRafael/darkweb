@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Web - Loja de Monstros</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        header {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #900; 
+        }
+
+        header h1 {
+            color: #f00;
+            font-size: 2em;
+            margin: 0;
+        }
+
+        nav {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #900;
+        }
+
+        nav a {
+            color: #f00;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 15px 0;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .secao-moeda {
+            background: #111;
+            border: 2px solid #900;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .secao-moeda h2 {
+            border-left: 5px solid #f00;
+            padding-left: 10px;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .secao-moeda p {
+            margin-bottom: 10px;
+        }
+
+        .categoria {
+            margin-bottom: 50px;
+        }
+
+        .categoria h2 {
+            border-left: 5px solid #f00;
+            padding-left: 10px;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .produto {
+            background: #111;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            border: 2px solid #900;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .produto img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #900;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #f00;
+        }
+
+        .produto p {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .produto button {
+            background: #f00;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        .produto button:hover {
+            background: #900;
+        }
+
+        footer {
+            background: #111;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #900;
+        }
+
+        footer p {
+            margin: 0;
+            color: #fff;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-content {
+            background: #111;
+            border: 2px solid #900;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            color: #f00;
+        }
+
+        .modal-content p {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #fff;
+        }
+
+        .modal-content button {
+            background: #f00;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .modal-content button:hover {
+            background: #900;
+        }
+
+        /* Responsivo */
+        @media(max-width: 1000px) {
+            .produto {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media(max-width: 600px) {
+            .produto {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dark Web - A Loja de Monstros</h1>
+    </header>
+    <nav>
+        <a href="#moeda">Moeda (DC)</a>
+        <a href="#monstros">Monstros</a>
+        <a href="#palhacos">Palhaços de Terror</a>
+        <a href="#espaciais">Monstros Espaciais</a>
+        <a href="#folclore">Folclore Brasileiro</a>
+    </nav>
+
+    <div class="container">
+        <!-- Seção da Moeda DC -->
+        <section class="secao-moeda" id="moeda">
+            <h2>O que é DC e como obtê-la?</h2>
+            <p>A DC (Dark Coin) é a moeda exclusiva da Dark Web, utilizada para adquirir nossos monstros, palhaços de terror, criaturas espaciais e lendas do folclore brasileiro. Com a DC, você pode expandir seu arsenal de criaturas e dominar seus inimigos.</p>
+            <p><strong>Como ganhar DC?</strong></p>
+            <ul>
+                <li><strong>Caçadas Noturnas:</strong> Participe de eventos especiais onde você enfrenta criaturas menores, coletando fragmentos que podem ser trocados por DC.</li>
+                <li><strong>Missões Secretas:</strong> Complete missões oferecidas pela Dark Web e receba DC como recompensa. Estas missões podem envolver recuperar artefatos, capturar monstros selvagens ou defender territórios sombrios.</li>
+                <li><strong>Torneios Internos:</strong> Participe de duelos contra outros colecionadores de monstros e suba no ranking. Quanto mais vitórias, mais DC você acumula.</li>
+            </ul>
+        </section>
+
+        <!-- Seção Monstros -->
+        <section class="categoria" id="monstros">
+            <h2>Monstros</h2>
+            <div class="produtos">
+                <div class="produto" data-nome="Monstro das Sombras" data-desc="Este monstro é formado pela escuridão pura, capaz de manipular sombras e desaparecer entre elas. Suas habilidades incluem furtividade absoluta, drenagem de luz e a habilidade de criar ilusões sombrias. Pode envolver suas presas em escuridão sólida, sufocando-as em terror.">
+                    <img src="monstro1.webp" alt="Monstro das Sombras">
+                    <h3>Monstro das Sombras</h3>
+                    <p>Preço: 999 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Criatura do Pântano" data-desc="Nascida nas águas pantanosas e tóxicas, esta criatura controla vegetações venenosas e insetos perigosos. Tem pele resistente, regeneração rápida e o poder de comandar a fauna pantanosa para emboscar intrusos. Seu toque é ácido e corrói armaduras e armas.">
+                    <img src="monstro2.webp" alt="Criatura do Pântano">
+                    <h3>Criatura do Pântano</h3>
+                    <p>Preço: 1200 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Colosso Noturno" data-desc="Um gigante ancestral que ganha força à noite. Capaz de invocar tempestades noturnas, golpear com força tremenda e emitir um rugido paralisante. Sua pele é dura como pedra e resiste a ataques diretos, tornando-o quase invencível no escuro.">
+                    <img src="monstro3.webp" alt="Colosso Noturno">
+                    <h3>Colosso Noturno</h3>
+                    <p>Preço: 2500 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Serpente das Profundezas" data-desc="Uma serpente marinha monstruosa, habitante das regiões mais abissais do oceano. Controla correntes marítimas, emite um canto hipnótico e libera uma tinta venenosa capaz de desorientar até as criaturas mais astutas. Suas presas são afiadas como lâminas.">
+                    <img src="monstro4.webp" alt="Serpente das Profundezas">
+                    <h3>Serpente das Profundezas</h3>
+                    <p>Preço: 3000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Palhaços de Terror -->
+        <section class="categoria" id="palhacos">
+            <h2>Palhaços de Terror</h2>
+            <div class="produtos">
+                <div class="produto" data-nome="Palhaço Sorriso Macabro" data-desc="Um palhaço demoníaco que se alimenta do medo. Pode criar ilusões horripilantes, distorcer a realidade e hipnotizar com seu sorriso aterrorizante. Suas gargalhadas causam pânico instantâneo, congelando o sangue de suas vítimas.">
+                    <img src="monstro5.webp" alt="Palhaço Sorriso Macabro">
+                    <h3>Palhaço Sorriso Macabro</h3>
+                    <p>Preço: 1500 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Risadinha Sangrenta" data-desc="Um palhaço vampírico que drena a energia vital através do riso. Pode manipular emoções, induzindo terror e desespero, e invocar marionetes demoníacas. Suas unhas gotejam um veneno psíquico que causa alucinações brutais.">
+                    <img src="monstro6.webp" alt="Risadinha Sangrenta">
+                    <h3>Risadinha Sangrenta</h3>
+                    <p>Preço: 2000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Pintura Sombria" data-desc="Com um pincel místico feito de ossos, este palhaço cria horrores pictóricos no ar que se tornam reais. Pode materializar criaturas grotescas, envolver inimigos em tinta pegajosa e alterar a paisagem com cenários macabros.">
+                    <img src="monstro7.webp" alt="Pintura Sombria">
+                    <h3>Pintura Sombria</h3>
+                    <p>Preço: 1750 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Malabarista Mortífero" data-desc="Habilidoso com armas afiadas, este palhaço atira facas encantadas que perseguem alvos telepaticamente. Pode dobrar as leis da física, desaparecer em fumaça colorida e lançar bombas de risadas explosivas.">
+                    <img src="monstro8.webp" alt="Malabarista Mortífero">
+                    <h3>Malabarista Mortífero</h3>
+                    <p>Preço: 2200 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Monstros Espaciais -->
+        <section class="categoria" id="espaciais">
+            <h2>Monstros Espaciais</h2>
+            <div class="produtos">
+                <div class="produto" data-nome="Alienígena Predador" data-desc="Um guerreiro estelar com sentidos aguçados e visão térmica. Pode se camuflar, emitir impulsos psíquicos para confundir presas, disparar projéteis de plasma e usar tentáculos energéticos para imobilizar o alvo.">
+                    <img src="monstro9.webp" alt="Alienígena Predador">
+                    <h3>Alienígena Predador</h3>
+                    <p>Preço: 3500 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Cefalópode Cósmico" data-desc="Com tentáculos luminescentes, este ser manipula gravidade e campos magnéticos. Controla enxames de pequenos satélites orgânicos, dispara jatos de tinta radioativa e cria vórtices gravitacionais para aprisionar inimigos.">
+                    <img src="monstro10.webp" alt="Cefalópode Cósmico">
+                    <h3>Cefalópode Cósmico</h3>
+                    <p>Preço: 4200 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Viajante Interdimensional" data-desc="Este monstro viaja entre dimensões, dobra o espaço-tempo e cria portais para mundos estranhos. Pode aprisionar vítimas em loopings temporais e distorcer sua percepção, esmagando-as sob múltiplas realidades.">
+                    <img src="monstro11.webp" alt="Viajante Interdimensional">
+                    <h3>Viajante Interdimensional</h3>
+                    <p>Preço: 5000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Engolidor de Estrelas" data-desc="Um colosso espacial que consome a energia de estrelas. Pode canalizar luz estelar como raios devastadores, criar buracos negros em miniatura e manipular campos gravitacionais massivos. Ao engolir estrelas, torna-se ainda mais poderoso.">
+                    <img src="monstro12.webp" alt="Engolidor de Estrelas">
+                    <h3>Engolidor de Estrelas</h3>
+                    <p>Preço: 7000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Folclore Brasileiro -->
+        <section class="categoria" id="folclore">
+            <h2>Lendas do Folclore Brasileiro</h2>
+            <div class="produtos">
+                <div class="produto" data-nome="Saci-Pererê" data-desc="Um travesso do folclore que controla redemoinhos e ventanias. Ágil, desaparece e reaparece em outro lugar, roubando pertences para causar desordem. Causa vertigem e confusão em inimigos, aproveitando o caos para escapar.">
+                    <img src="monstro13.webp" alt="Saci-Pererê">
+                    <h3>Saci-Pererê</h3>
+                    <p>Preço: 800 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Curupira" data-desc="Protetor das florestas com pés virados para trás. Tem força sobre-humana, controla raízes e plantas carnívoras, invoca enxames de abelhas selvagens e cria muralhas vegetais. A natureza responde ao seu chamado contra invasores.">
+                    <img src="monstro14.webp" alt="Curupira">
+                    <h3>Curupira</h3>
+                    <p>Preço: 1000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Boitatá" data-desc="Uma serpente de fogo que vigia campos e florestas. Emite chamas intensas, hipnotiza com seu brilho flamejante e queima tudo que é hostil. Absorve energia térmica e libera explosões ígneas devastadoras.">
+                    <img src="monstro15.webp" alt="Boitatá">
+                    <h3>Boitatá</h3>
+                    <p>Preço: 1500 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+                <div class="produto" data-nome="Iara" data-desc="Uma sereia encantadora que hipnotiza com seu canto. Controla a água, invoca tempestades e cria ilusões aquáticas. Pode chamar criaturas marinhas em seu auxílio, atraindo inimigos para as profundezas sem retorno.">
+                    <img src="monstro16.webp" alt="Iara">
+                    <h3>Iara</h3>
+                    <p>Preço: 2000 DC</p>
+                    <div class="buttons">
+                        <button class="descricao-btn">Ver Descrição</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+            <button id="close-modal">Fechar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Dark Web - A loja definitiva de monstros e criaturas. © 2024</p>
+    </footer>
+
+    <script>
+        const descricaoButtons = document.querySelectorAll('.descricao-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalTitle = document.getElementById('modal-title');
+        const modalText = document.getElementById('modal-text');
+        const closeModal = document.getElementById('close-modal');
+
+        descricaoButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const produto = btn.closest('.produto');
+                const nome = produto.getAttribute('data-nome');
+                const desc = produto.getAttribute('data-desc');
+
+                modalTitle.textContent = nome;
+                modalText.textContent = desc;
+                modalOverlay.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modalOverlay.style.display = 'none';
+        });
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
